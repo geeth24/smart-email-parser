@@ -23,7 +23,7 @@ app = FastAPI(
 
 origins = [
     "http://localhost:3000",
-    "smart-email-parser.geeth.app",
+    "https://smart-email-parser.geeth.app",
 ]
 # CORS configuration
 app.add_middleware(
