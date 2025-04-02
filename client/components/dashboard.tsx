@@ -6,7 +6,6 @@ import { StarredEmails } from "@/components/starred-emails";
 import { FollowupEmails } from "@/components/followup-emails";
 import { ActionItems } from "@/components/action-items";
 import { EmailDetail } from "@/components/email-detail";
-import { AuthButton } from "@/components/auth-button";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
 import {
@@ -26,7 +25,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { 
   Loader2, 
-  MailQuestion, 
   Star, 
   AlertTriangle, 
   Reply, 
@@ -35,6 +33,7 @@ import {
 } from "lucide-react";
 import { EmailSummary, EmailDetail as ApiEmailDetail } from "@/lib/api-client";
 import { ModeToggle } from "@/components/mode-toggle";
+import { LandingPage } from "@/components/landing-page";
 
 // Define adapter types to match component expectations
 type Email = {
@@ -261,19 +260,7 @@ export function Dashboard({ apiUrl }: DashboardProps) {
   };
 
   if (!isAuthenticated && !isLoadingAuth) {
-    return (
-      <div className="flex flex-col items-center justify-center py-16 gap-4">
-        <MailQuestion className="h-24 w-24 text-muted-foreground" />
-        <h2 className="text-2xl font-semibold text-center">
-          Smart Email Analysis
-        </h2>
-        <p className="text-muted-foreground text-center max-w-lg">
-          Sign in with your Google account to analyze and summarize your important emails.
-          We&apos;ll extract key information, action items, contacts, and provide AI-powered insights.
-        </p>
-        <AuthButton onAuthSuccess={login} apiUrl={apiUrl} />
-      </div>
-    );
+    return <LandingPage onLogin={(userId: number) => login(userId)} apiUrl={apiUrl} />;
   }
 
   // Loading state
