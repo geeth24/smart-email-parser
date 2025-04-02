@@ -34,6 +34,7 @@ import {
   Mail
 } from "lucide-react";
 import { EmailSummary, EmailDetail as ApiEmailDetail } from "@/lib/api-client";
+import { ModeToggle } from "@/components/mode-toggle";
 
 // Define adapter types to match component expectations
 type Email = {
@@ -445,13 +446,16 @@ export function Dashboard({ apiUrl }: DashboardProps) {
           </Breadcrumb>
           
           {isAuthenticated && (
-            <div className="ml-auto">
-              <Button variant="outline" onClick={() => fetchNewEmails()} disabled={isFetching}>
-                {isFetching ? (
+            <div className="flex items-center gap-2">
+              <div className="ml-auto">
+                <Button variant="outline" onClick={() => fetchNewEmails()} disabled={isFetching}>
+                  {isFetching ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : null}
                 Refresh Emails
               </Button>
+              </div>
+              <ModeToggle />
             </div>
           )}
         </header>
