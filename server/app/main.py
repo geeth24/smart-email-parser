@@ -21,10 +21,14 @@ app = FastAPI(
     version="0.1.0"
 )
 
+origins = [
+    "http://localhost:3000",
+    "smart-email-parser.geeth.app",
+]
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
