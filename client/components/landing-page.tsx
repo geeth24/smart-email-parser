@@ -300,6 +300,11 @@ export function LandingPage({ onLogin, apiUrl }: LandingPageProps) {
               <MailQuestion className="h-6 w-6 mr-2 text-primary" />
               <span className="font-semibold">Smart Email Parser</span>
             </div>
+            <div className="flex gap-4">
+              <a href="/privacy" className="text-sm hover:text-primary transition-colors">
+                Privacy Policy
+              </a>
+            </div>
             <div className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Smart Email Parser. All rights reserved.
             </div>
